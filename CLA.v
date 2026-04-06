@@ -5,7 +5,7 @@ module Cla_4(
     output [3:0]sum,
     output Cout,
     output [3:0]P,
-    output [3:0]G    
+    output [3:0]G  
 );
     wire [4:0]C;
     assign C[0] = Cin;
@@ -43,5 +43,7 @@ module Cla_16(
     Cla_4 u3(a[15:12], b[15:12], C[3], sum[15:12], C[4], P[3], G[3]);
 
     assign Cout = C[4];
-    assign overflow = C[4] ^ C[3];
+    
+    assign overflow = (a[15] == b[15]) && (sum[15] != a[15]); 
+
 endmodule
