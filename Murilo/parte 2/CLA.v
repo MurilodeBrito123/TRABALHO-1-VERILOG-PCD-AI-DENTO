@@ -44,6 +44,6 @@ module Cla_16(
 
     assign Cout = C[4];
     
-    assign overflow = (a[15] == b[15]) && (sum[15] != a[15]); 
+    assign overflow = C[4] ^ C[3];
 
 endmodule
