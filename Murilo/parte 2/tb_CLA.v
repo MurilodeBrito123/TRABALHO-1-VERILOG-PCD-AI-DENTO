@@ -29,7 +29,6 @@ module tb_cla_16;
         $dumpfile("dump.vcd");
         $dumpvars(0, tb_cla_16);
         
-        $display("\n==== INICIO ====\n");
         a = 16'h0001; b = 16'h0001; cin = 0; testa();
         a = 16'hFFFF; b = 16'h0001; cin = 0; testa();
         a = 16'hAAAA; b = 16'h5555; cin = 0; testa();
@@ -39,7 +38,6 @@ module tb_cla_16;
             testa();
         end
         
-        $display("\n==== FIM ====\n");
         $finish;
     end
 endmodule
