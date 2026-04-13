@@ -40,6 +40,7 @@ module Cla_16(
   output Cout,
   output overflow
 );
+  wire [3:0] C_out;
   wire [3:0] propagate;
   wire [3:0]generatte;
   wire [3:0] P [3:0];
@@ -48,11 +49,10 @@ module Cla_16(
   assign C[0] = Cin;
 
 //   CLA
-  Cla_4 u0(a[3:0],   b[3:0],   C[0], sum[3:0],   , propagate[0], generatte[0], P[0], G[0]);
-  Cla_4 u1(a[7:4],   b[7:4],   C[1], sum[7:4],   , propagate[1], generatte[1], P[1], G[1]);
-  Cla_4 u2(a[11:8],  b[11:8],  C[2], sum[11:8],  , propagate[2], generatte[2], P[2], G[2]);
-  Cla_4 u3(a[15:12], b[15:12], C[3], sum[15:12], , propagate[3], generatte[3], P[3], G[3]);
-
+  Cla_4 u0(a[3:0], b[3:0], C[0], sum[3:0], C_out[0], propagate[0], generatte[0], P[0], G[0]);
+  Cla_4 u1(a[7:4], b[7:4], C[1], sum[7:4], C_out[1], propagate[1], generatte[1], P[1], G[1]);
+  Cla_4 u2(a[11:8], b[11:8], C[2], sum[11:8], C_out[2], propagate[2], generatte[2], P[2], G[2]);
+  Cla_4 u3(a[15:12], b[15:12], C[3], sum[15:12], C_out[3], propagate[3], generatte[3], P[3], G[3]);
 // CLG-4
   assign C[1] = generatte[0] | (propagate[0] & C[0]);
   assign C[2] = generatte[1] | (propagate[1] & generatte[0]) | (propagate[1] & propagate[0] & C[0]);
